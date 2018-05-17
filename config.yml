@@ -1,0 +1,11 @@
+content_layer_ids:
+  - 4
+style_layer_ids:
+  - 0
+  - 2
+  - 3
+weight_content: 1.5
+weight_style: 10.0
+weight_denoise: 0.3
+num_iterations: 40
+step_size: 10.0
