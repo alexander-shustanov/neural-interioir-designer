@@ -10,6 +10,7 @@ from skimage.measure import label
 from skimage.transform import resize
 
 from nn import Model, style_angle
+from paint_tool import PaintTool
 from style_helper import StyleHelper
 
 BRUSH = "brush"
@@ -51,6 +52,8 @@ class App:
 
         self.keys = KeysHelper(self.root)
 
+        self.paint_tool = PaintTool(self.canvas_state, self.keys, IMG_SIZE)
+
         self.root.mainloop()
 
     def on_mask_changed(self):
@@ -68,6 +71,7 @@ class App:
         canvas = tk.Canvas(self.root, width=IMG_SIZE[1], height=IMG_SIZE[0], bg='grey')
         canvas.bind("<B1-Motion>", self.paint)
         canvas.bind("<Button-1>", self.click)
+        canvas.bind("<ButtonRelease-1>", self.mouse_release)
 
         return canvas
 
@@ -88,7 +92,7 @@ class App:
 
     def save_file(self):
         img_path = fdialog.asksaveasfilename(title="Save file")
-        imsave
+        imsave(img_path, self.canvas_state.img)
 
     def create_styles_box(self):
         styles = sorted(glob.glob("styles/*.*"))
@@ -132,7 +136,12 @@ class App:
         return box
 
     def paint(self, event):
-        pass
+        if self.tool == BRUSH:
+            self.paint_tool.paint(event.x, event.y)
+
+    def mouse_release(self, *args):
+        if self.tool == BRUSH:
+            self.paint_tool.end()
 
     def click(self, event):
         x, y = event.x, event.y
@@ -148,11 +157,12 @@ class App:
 
     def apply_style(self):
         if self.style_helper is None:
-            style_image = resize(imread(self.style_image_name), IMG_SIZE)
-            self.style_helper = StyleHelper(self.model, self.canvas_state.img, style_image, np.where(self.canvas_state.mask > 0.0, 1.0, 0.0))
+            style_image = resize(imread(self.style_image_name), IMG_SIZE) * 256.0
+            self.style_helper = StyleHelper(self.model, self.canvas_state.img, style_image,
+                                            np.where(self.canvas_state.mask > 0.0, 1.0, 0.0))
 
         mixed = self.canvas_state.img.copy().astype(float)
-        for i in range(20):
+        for i in range(10):
             mixed -= self.style_helper.step(mixed)
             mixed = np.clip(mixed, 0.0, 255.0)
 

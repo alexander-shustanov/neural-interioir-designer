@@ -97,6 +97,41 @@ class Model:
 
         return total_loss
 
+    def get_content(self, content_image, layer_ids):
+        feed_dict = self.create_feed_dict(content_image)
+
+        layers = self.get_layers(layer_ids)
+
+        values = self.sess.run(layers, feed_dict=feed_dict)
+
+        return values
+
+    def create_patched_content_loss(self, example_patch, layer_ids):
+        content = self.get_content(example_patch, layer_ids)
+
+        placeholders = []
+
+        for l in content:
+            placeholders.append(tf.placeholder(shape=l.shape, dtype=tf.float32))
+
+        layer_losses = []
+
+        layers = self.get_layers(layer_ids)
+
+        for value, layer in zip(placeholders, layers):
+            value_const = tf.constant(value)
+            loss = mean_squared_error(layer, value_const)
+            layer_losses.append(loss)
+
+        total_loss = tf.reduce_mean(layer_losses)
+
+        def create_feed_dict(content_patch):
+            content = self.get_content(content_patch, layer_ids)
+
+            return {pl: l for pl, l in zip(placeholders, content)}
+
+        return total_loss, create_feed_dict
+
     def create_masked_style_loss(self, style_image, layer_ids, mask):
         style_feed = self.create_feed_dict(style_image)
         mask_feed = self.create_feed_dict(np.stack([mask, mask, mask], axis=2))

@@ -5,14 +5,14 @@ weight_content = 1.5
 weight_style = 10.0
 weight_denoise = 0.3
 num_iterations = 60
-step_size = 2.0
+step_size = 4.0
 
 
 class StyleHelper:
     def __init__(self, model, content_image, style_image, mask):
         self.model = model
 
-        loss_content = self.model.create_content_loss(content_image, [2])
+        loss_content = self.model.create_content_loss(content_image, [4])
         loss_style = self.model.create_masked_style_loss(style_image, [2, 3, 4], mask)
         loss_denoise = self.model.create_denoise_loss()
 
