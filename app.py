@@ -17,7 +17,7 @@ BRUSH = "brush"
 MAGIC = "magic"
 STYLE = "style"
 
-IMG_SIZE = (250, 250)
+IMG_SIZE = (300, 300)
 
 THR = 0.2
 
@@ -30,6 +30,7 @@ class App:
 
         self.root = tk.Tk()
         self.root.config()
+        self.root.winfo_toplevel().title("Neural Designer")
 
         self.current_tool = tk.StringVar()
         self.current_tool.set(BRUSH)
