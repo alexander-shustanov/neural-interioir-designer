@@ -1,21 +1,58 @@
 # NeuralInteriorDesigner
+<p>NeuralInteriorDesigner - приложение для дизайнеров, которое переносит работу с изображениями на новый уровень.</p>
 
-NeuralInteriorDesigner - приложение для дизайнеров, которое переносит работу с изображениями на новый уровень.
+<p><img alt="" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/LOGO.jpg?raw=true" /></p>
 
-Идея приложения - с помощью простых инструментов менять облик комнаты, таким образом как: изменение обоев, потолка, пола; замена одних элементов интерьера на другие, удаленик элементов интерьера, добавление элементов интерьера.
+<p>Идея приложения - с помощью простых инструментов менять облик комнаты, таким образом как: изменение обоев, потолка, пола;&nbsp;замена одних элементов интерьера на другие, удаление&nbsp;элементов интерьера, добавление элементов интерьера.</p>
 
-Отдельные части приложения в том или ином виде готовы, но в итоговое приложение объединены следующие компоненты: изменение обоъев, пола, потолка; "умная волшебная палочка". Остальные части продемонстрированы в jupyter ноутбуках.
+<p>Отдельные части приложения в том или ином виде готовы, но в итоговое приложение объединены следующие компоненты: изменение обоъев, пола, потолка; &quot;умная волшебная палочка&quot;. Остальные части продемонстрированы в jupyter ноутбуках.</p>
 
-Ноу-хау: "Умная волшебная палочка". Новый метод выделения области изображения, который работает не с пикселями, а с объектами. 
+<p>Ноу-хау: &quot;Умная волшебная палочка&quot;. Новый метод выделения области изображения, который работает не с пикселями, а с объектами.&nbsp;</p>
 
-Для создания генеративных моделей использовался датасет SUNRGBD. 
+<p>Для создания генеративных моделей использовался датасет <a href="http://rgbd.cs.princeton.edu/">SUNRGBD</a>.&nbsp;</p>
 
-Примеры: 
+<p>Примеры:&nbsp;</p>
 
-1. Удаление элементов интерьера. В приложение не добавлено, работает из jupyter-notebook.
+<p>1. Удаление элементов интерьера. В&nbsp;приложение не добавлено, работает из jupyter-notebook.</p>
 
-2. Умная волшебная палочка. Добавлено в приложение.
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td><img alt="original" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/removing_original.jpg?raw=true" style="height:300px; width:225px" /></td>
+			<td><img alt="altered" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/altered.jpg?raw=true" style="height:327px; width:331px" /></td>
+			<td><img alt="result" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/without_chair.jpg?raw=true" style="height:300px; width:295px" /></td>
+		</tr>
+	</tbody>
+</table>
 
-3. Добавление элементов интерьера. Работает плохо, только из jupyter-notebook. По всей видимости имеет место переобучение, требуются дальнейшие исследования.
+<p>&nbsp;</p>
 
-4. Замена обоев, полов. Основано на немного видоизмененном style-tranfer. Добавлено в приложение.
+<p>2. Умная волшебная палочка. Добавлено в приложение.</p>
+
+<p><img alt="magic" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/application/Screenshot%20from%202018-05-19%2015-33-51.png?raw=true" style="height:314px; width:323px" /></p>
+
+<p>3. Добавление элементов интерьера. Работает плохо, только из jupyter-notebook. По всей видимости имеет место переобучение, требуются дальнейшие исследования.</p>
+
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td><img alt="input" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/generative/1_input.png?raw=true" style="height:256px; width:256px" /></td>
+			<td><img alt="result" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/generative/1_output.png?raw=true" style="height:256px; width:256px" /></td>
+			<td><img alt="target" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/generative/1_target.png?raw=true" style="height:256px; width:256px" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>4. Замена обоев, полов. Основано на немного видоизмененном style-tranfer. Добавлено в приложение.</p>
+
+<p><img alt="" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/application/Screenshot%20from%202018-05-19%2015-34-16.png?raw=true" /></p>
+
+<p><img alt="" src="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/presentation/application/new_wallpaper.png?raw=true" /></p>
+
+<p><a href="https://drive.google.com/open?id=1-s_thwO3ZPERqZyWJKKJtvL0et9lbe3L">Модели</a>. <a href="https://docs.google.com/presentation/d/1qarSe9f87gavkwd_HIe4h0qx93R9wYjG-r5xJf9HhbI/edit?usp=sharing">Презентация</a>. <a href="https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/pix2pix/generate.ipynb">Ноутбук для запуска генеративнных моделей</a>.</p>
+
+# Инструкция по запуску
+
+```bash
+python3 app.py
+```
