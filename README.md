@@ -51,13 +51,22 @@
 
 Также смотрите [презентацию](https://docs.google.com/presentation/d/1qarSe9f87gavkwd_HIe4h0qx93R9wYjG-r5xJf9HhbI/edit?usp=sharing) и [видео](https://vimeo.com/270951743).
 
-# Инструкции
+# Требования
+* cuda 9.0
+* cudnn 7.1
+* tensorflow 1.8
+* Много питоновских зависимостей, таких как: numpy, skimage, tkinter и тд.
+* Видеокартчока с не менее 3gb видеопамяти
+
+
+# Инструкция по запуску
 
 Для запуска приложения выполните. 
 
 ```bash
 python3 app.py
 ```
+Свои стили можно скачать из интернета и положить в директорий styles. Кроме описанных замен пола и потолка стили также не плохо переносятся на диваны (можно сделать леопардовый диван).
 
 Для запуска модели в [jupyter-notebook](https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/pix2pix/generate.ipynb) скачайте [модели](https://drive.google.com/drive/folders/1-s_thwO3ZPERqZyWJKKJtvL0et9lbe3L) и распакуйте в папку pix2pix.
 
