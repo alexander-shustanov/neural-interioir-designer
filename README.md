@@ -72,9 +72,9 @@ python3 app.py
 
 Текущяя реализация работает с изображениями 300x300, если ваша видеокарточка имеет много видеопамяти, можете поменять размер изображения в app.py IMG_SIZE.
 
-
 Для запуска модели в [jupyter-notebook](https://github.com/alexander-shustanov/neural-interioir-designer/blob/master/pix2pix/generate.ipynb) скачайте [модели](https://drive.google.com/drive/folders/1-s_thwO3ZPERqZyWJKKJtvL0et9lbe3L) и распакуйте в папку pix2pix.
 
+Inpainting модель тренировалась восстанавливать изображение по маске определенных цветов, но в итоге, эти цвета оказались не очень существенны, но лучше выбирать цвета из палитры palette.json. Эти же цвета лучше выбирать при работе с генеративной моделью.
 
 # Источники
 
